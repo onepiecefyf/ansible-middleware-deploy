@@ -1,0 +1,2 @@
+software_install_path: "/opt/soft"
+ansible_semaphore_install_path: "{{ software_install_path }}/semaphore"

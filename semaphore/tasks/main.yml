@@ -1,0 +1,21 @@
+---
+
+- name: Create | semaphore directory.
+  file: path={{ ansible_semaphore_install_path }} state=directory  mode=0755
+
+- name: install | Copy semaphore_2.8.74_linux_amd64.rpm file to agent.
+  unarchive:
+    src: "semaphore_2.8.74_linux_amd64.rpm"
+    dest: "{{ ansible_semaphore_install_path }}"
+  when: ((ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat"))
+
+- name: Install | force install semaphore_2.8.74_linux_amd64.rpm
+  shell: "rpm -ivh --force --nodeps /{{ ansible_semaphore_install_path }}/semaphore_2.8.74_linux_amd64.rpm"
+  when: ((ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat")"
+
+
+
+
+
+
+
